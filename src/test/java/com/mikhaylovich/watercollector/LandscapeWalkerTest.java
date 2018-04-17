@@ -15,12 +15,12 @@ public class LandscapeWalkerTest {
         LandscapeWalker walker = new LandscapeWalker();
 
         // expect
-        assertEquals(0, walker.addPoint(0, 3));
-        assertEquals(0, walker.addPoint(1, 1));
-        assertEquals(2, walker.addPoint(2, 5));
-        assertEquals(2, walker.addPoint(3, 7));
-        assertEquals(2, walker.addPoint(4, 2));
-        assertEquals(5, walker.addPoint(5, 5));
+        assertEquals(0, walker.addHeight(3));
+        assertEquals(0, walker.addHeight(1));
+        assertEquals(2, walker.addHeight(5));
+        assertEquals(2, walker.addHeight(7));
+        assertEquals(2, walker.addHeight(2));
+        assertEquals(5, walker.addHeight(5));
     }
 
     @Test

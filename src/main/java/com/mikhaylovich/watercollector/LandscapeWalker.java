@@ -13,17 +13,19 @@ public class LandscapeWalker {
 
     private int bottom = 0;
 
+    private int position = 0;
+
 
     public static int readLandscape(int... heights) {
         LandscapeWalker walker = new LandscapeWalker();
-        for (int index = 0; index < heights.length; index++) {
-            walker.addPoint(index, heights[index]);
+        for (int heigth : heights) {
+            walker.addHeight(heigth);
         }
         return walker.getWaterCount();
     }
 
-    public int addPoint(int position, int height) {
-        return addPoint(new LandscapePoint(position, height));
+    public int addHeight(int height) {
+        return addPoint(new LandscapePoint(this.position++, height));
     }
 
     private int addPoint(LandscapePoint point) {
@@ -49,7 +51,7 @@ public class LandscapeWalker {
         return this.stack.peek();
     }
 
-    private int getWaterCount() {
+    public int getWaterCount() {
         return this.waterCount;
     }
 
