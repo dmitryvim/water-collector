@@ -27,29 +27,29 @@ public class LandscapeWalker {
     }
 
     private int addPoint(LandscapePoint point) {
-        if (this.stack.empty()) {
-            return push(point);
+        while (stackNotEmpty() && top().getHeight() < point.getHeight()) {
+            collect(point);
+            this.bottom = this.stack.pop().getHeight();
         }
-        LandscapePoint top = this.stack.peek();
-        if (top.getHeight() == point.getHeight()) {
-            return push(point);
-        }
-        if (top.getHeight() > point.getHeight()) {
-            return push(point);
-        }
-        do {
-            top = this.stack.pop();
-            this.waterCount += point.collectWith(top, this.bottom);
-            this.bottom = top.getHeight();
-        }
-        while (!this.stack.empty() && this.stack.peek().getHeight() < point.getHeight());
-        if (!this.stack.empty()) {
-            this.waterCount += point.collectWith(this.stack.peek(), this.bottom);
+        if (stackNotEmpty()) {
+            collect(point);
         }
         return push(point);
     }
 
-    public int getWaterCount() {
+    private boolean stackNotEmpty() {
+        return !this.stack.empty();
+    }
+
+    private void collect(LandscapePoint point) {
+        this.waterCount += point.collectWith(top(), this.bottom);
+    }
+
+    private LandscapePoint top() {
+        return this.stack.peek();
+    }
+
+    private int getWaterCount() {
         return this.waterCount;
     }
 
