@@ -3,7 +3,7 @@ package com.mikhaylovich.watercollector;
 import java.util.Stack;
 
 /**
- * Created by dmitry on 17.04.2018. ${PATH}
+ * @author dmitry.mikhailovich@gmail.com
  */
 public class LandscapeWalker {
 

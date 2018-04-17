@@ -1,7 +1,7 @@
 package com.mikhaylovich.watercollector;
 
 /**
- * Created by dmitry on 17.04.2018. ${PATH}
+ * @author dmitry.mikhailovich@gmail.com
  */
 public class WaterCollectorApplication {
     public static void main(String[] args) {
