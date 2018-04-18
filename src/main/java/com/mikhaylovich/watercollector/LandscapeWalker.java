@@ -1,13 +1,14 @@
 package com.mikhaylovich.watercollector;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * @author dmitry.mikhailovich@gmail.com
  */
 public class LandscapeWalker {
 
-    private Stack<LandscapePoint> stack = new Stack<LandscapePoint>();
+    private Deque<LandscapePoint> stack = new ArrayDeque<>();
 
     private int waterCount = 0;
 
@@ -16,7 +17,7 @@ public class LandscapeWalker {
     private int position = 0;
 
 
-    public static int readLandscape(int... heights) {
+    public static int walkLandscape(int... heights) {
         LandscapeWalker walker = new LandscapeWalker();
         for (int heigth : heights) {
             walker.addHeight(heigth);
@@ -40,7 +41,7 @@ public class LandscapeWalker {
     }
 
     private boolean stackNotEmpty() {
-        return !this.stack.empty();
+        return !this.stack.isEmpty();
     }
 
     private void collect(LandscapePoint point) {
