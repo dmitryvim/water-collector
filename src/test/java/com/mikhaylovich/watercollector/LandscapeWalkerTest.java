@@ -29,7 +29,7 @@ public class LandscapeWalkerTest {
         // .1.
         // ...
         // 313
-        assertEquals(2, LandscapeWalker.readLandscape(3, 1, 3));
+        assertEquals(2, LandscapeWalker.walkLandscape(3, 1, 3));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class LandscapeWalkerTest {
         // .23......
         // .1.......
         // 501233334
-        assertEquals(13, LandscapeWalker.readLandscape(5, 0, 1, 2, 3, 3, 3, 3, 4));
+        assertEquals(13, LandscapeWalker.walkLandscape(5, 0, 1, 2, 3, 3, 3, 3, 4));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class LandscapeWalkerTest {
         // .....0...
         // .........
         // 544331669
-        assertEquals(10, LandscapeWalker.readLandscape(5, 4, 4, 3, 3, 1, 6, 6, 9));
+        assertEquals(10, LandscapeWalker.walkLandscape(5, 4, 4, 3, 3, 1, 6, 6, 9));
     }
 
     @Test
@@ -66,6 +66,18 @@ public class LandscapeWalkerTest {
         // .3...8.9.......34....
         // .....................
         // 414331413345422112345
-        assertEquals(34, LandscapeWalker.readLandscape(4, 1, 4, 3, 3, 1, 4, 1, 3, 3, 4, 5, 4, 2, 2, 1, 1, 2, 3, 4, 5));
+        assertEquals(34, LandscapeWalker.walkLandscape(4, 1, 4, 3, 3, 1, 4, 1, 3, 3, 4, 5, 4, 2, 2, 1, 1, 2, 3, 4, 5));
+    }
+
+    @Test
+    public void largeLandscape() {
+        // given
+        int max = 32000;
+        int[] heights = new int[max];
+        heights[0] = max;
+        heights[max - 1] = max;
+
+        // expect
+        assertEquals(max * (max - 2), LandscapeWalker.walkLandscape(heights));
     }
 }
